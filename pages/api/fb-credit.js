@@ -1,5 +1,4 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-// import { NowRequest, NowResponse } from '@vercel/node'
 import Joi from 'joi';
 import get from 'lodash.get';
 import HttpStatus from 'http-status-codes';
@@ -8,9 +7,14 @@ export default async (req, res) => {
   const schema = Joi.object({
     kwuid: Joi.number().required(),
     credit: Joi.number().required(),
+    order_id: Joi.number().required(),
   });
 
-  let input = null;
+  let input = {
+    kwuid: null,
+    credit: null,
+    order_id: null,
+  };
   try {
     input = await schema.validateAsync(req.query);
   } catch (err) {
@@ -21,8 +25,7 @@ export default async (req, res) => {
     });
   }
 
-  const { kwuid, credit } = input;
-  const orderId = Math.floor(Math.random() * (99999 - 10000 + 1) + 10000);
+  const { kwuid, credit, order_id } = input;
 
   const data = {
     event: {
@@ -64,7 +67,7 @@ export default async (req, res) => {
           },
         },
         order: {
-          id: orderId,
+          id: order_id,
           editionCode: `${credit} Credits`,
           pricingDuration: "MONTHLY",
           freeTrial: {

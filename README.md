@@ -21,16 +21,9 @@ yarn dev
 ```
 
 #### Run in Production
-- Install dependencies as documented above
-- Build ts file
-    ```shell
-    yarn build
-    ```
-- Start prod daemon
-    ```shell
-    yarn start
-    ```
-    This can be added on supervisor to run as daemon to ensure its live forever
+Build and Deploy by [Vercel.com](https://vercel.com)
+
+Visit Here: https://marketplace-echo.vercel.app
 
 
 ## API Doc

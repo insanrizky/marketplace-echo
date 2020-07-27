@@ -32,4 +32,4 @@ All API starts with `/api` prefix
 
 | Method | Endpoint | Params |
 |---|---|---|
-| GET | /fb-credit | { kwuid: number, credit: number } |
+| GET | /fb-credit | ?kwuid={number}&credit={number} |
